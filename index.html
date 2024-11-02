@@ -1,17 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Spooky Ghost</title>
+<head>
+  <!-- required meta tags -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Spooky Ghost</title>
 
-    <link rel="stylesheet" href="style.css" />
-  </head>
+  <link rel="stylesheet" href="style.css" />
+</head>
 
-  <body>
-
+<body>
+  <!-- spooky ghost -->
+  <div id="parent-container">
     <div id="container">
       <div id="spooky">
         <div id="body">
@@ -27,31 +29,31 @@
       <div id="shadow"></div>
     </div>
 
+    <!-- witch cauldron animation (https://codepen.io/code2rithik/pen/gOxxQMQ) -->
     <div class="cauldron">
-    <div class="gooeys center">
-        <canvas style="position:absolute;" id="canvas"</canvas>
+      <div class="gooeys center">
+        <canvas style="position:absolute;" id="canvas" </canvas>
       </div>
-      
+
       <div class="glow center"></div>
       <div class="shadow center"></div>
       <div class="pot-top center"></div>
       <div class="pot center"></div>
-      
-      
-      
       <svg>
         <defs>
           <filter id="filter">
             <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
-            <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 17 -10" result="filter" />
-            <feBlend/>
+            <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 17 -10"
+              result="filter" />
+            <feBlend />
           </filter>
         </defs>
       </svg>
     </div>
+  </div>
 
-      <script src="script.js"></script>
+  <script src="script.js"></script>
 
-  </body>
+</body>
 
 </html>

@@ -1,10 +1,11 @@
+//witch cauldron animation (https://codepen.io/code2rithik/pen/gOxxQMQ)
 canvas = document.getElementById("canvas");
-var context = canvas.getContext('2d');
+var context = canvas.getContext("2d");
 W = canvas.width = window.innerWidth;
 H = canvas.height = window.innerHeight;
 generatorStock = [];
 
-generatorStock.push(new particleGenerator( 2, 3, 30, 30));
+generatorStock.push(new particleGenerator(2, 3, 30, 30));
 
 function randomInt(min, max) {
   return Math.floor(min + Math.random() * (max - min + 1));
@@ -12,24 +13,23 @@ function randomInt(min, max) {
 
 function particle(vx, vy, size) {
   this.radius = randomInt(0, size);
-  this.x = W/2;
-  this.y = H/2;
+  this.x = W / 2;
+  this.y = H / 2;
   this.alpha = 1;
   this.vx = randomInt(-vx, vx);
-  if(Math.random() < 0.1){
-    this.vy = randomInt(-vy, -vy-3);  
-  }
-  else{
+  if (Math.random() < 0.1) {
+    this.vy = randomInt(-vy, -vy - 3);
+  } else {
     this.vy = randomInt(0, -vy);
   }
   this.lifetime = 100;
 }
-particle.prototype.update = function() {
+particle.prototype.update = function () {
   this.lifetime -= 2;
   this.x += this.vx;
-  this.y += this.vy; 
-  
-  if (this.lifetime < 20){
+  this.y += this.vy;
+
+  if (this.lifetime < 20) {
     this.radius -= 2;
   }
 
@@ -41,8 +41,7 @@ particle.prototype.update = function() {
   context.fill();
   context.stroke();
   context.closePath();
-
-}
+};
 
 function particleGenerator(vx, vy, size, maxParticles) {
   this.size = size;
@@ -52,10 +51,10 @@ function particleGenerator(vx, vy, size, maxParticles) {
   this.particles = [];
 }
 var freq = 0.5;
-particleGenerator.prototype.animate = function() {
-  if (this.particles.length < this.maxParticles && Math.random() < freq)  {
+particleGenerator.prototype.animate = function () {
+  if (this.particles.length < this.maxParticles && Math.random() < freq) {
     this.particles.push(new particle(this.vx, this.vy, this.size));
-    if(this.particles.length == this.maxParticles/2){
+    if (this.particles.length == this.maxParticles / 2) {
       freq = 0.1;
     }
   }
@@ -64,9 +63,9 @@ particleGenerator.prototype.animate = function() {
     p.update();
     if (p.radius < 10) {
       this.particles[i] = new particle(this.vx, this.vy, this.size);
-    }  
+    }
   }
-}
+};
 
 function update() {
   context.clearRect(0, 0, W, H);
@@ -75,11 +74,15 @@ function update() {
     generatorStock[i].animate();
   }
   window.requestAnimationFrame(update);
-}                        
+}
 
 update();
 
-window.addEventListener('resize', function(e) {
-  W = window.innerWidth;
-  H = window.innerHeight;
-}, false);
+window.addEventListener(
+  "resize",
+  function (e) {
+    W = window.innerWidth;
+    H = window.innerHeight;
+  },
+  false
+);
